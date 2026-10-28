@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>อลิซ | ใต้เงาจันทรา</title>
+<meta property="og:title" content="อลิซ | ใต้เงาจันทรา Under Her Rules">
+<meta property="og:description" content="ปลดล็อกมือถือของอลิซ ถ้ารู้รหัส ออกอากาศทุกวันเสาร์ 20:00 น. ทาง iQIYI">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌷</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg1:#2a1738;--bg2:#e8508a;--pink:#ff7eb0;--card:#241a33;--sub:#a99bbd}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:"Prompt",system-ui,sans-serif;background:#07070f;color:#fff;display:flex;justify-content:center;align-items:center}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+.phone{position:relative;overflow:hidden;width:100%;height:100%;max-width:400px;background:#120c1c}
+@media(min-width:520px){.phone{height:min(100%,860px);border-radius:46px;border:8px solid #1a1a24}}
+.sb{position:absolute;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;padding:calc(env(safe-area-inset-top,0px) + 12px) 28px 0;font-size:14px;font-weight:600;pointer-events:none}
+.scr{position:absolute;inset:0;transition:transform .4s ease,opacity .3s}
+.wall{--wf:radial-gradient(circle at 25% 18%,rgba(255,225,238,.55) 0 5%,rgba(255,225,238,.1) 6% 13%,transparent 14%),linear-gradient(170deg,var(--bg1),#7a3a74 60%,var(--bg2));background:var(--wf);background-size:cover;background-position:center}
+/* lock */
+.lock{z-index:30;display:flex;flex-direction:column;align-items:center;padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+.lock.up{transform:translateY(-100%)}
+#ldate{font-size:17px;opacity:.9}
+#bigclock{font-size:92px;font-weight:300;line-height:1.1}
+.nots{width:100%;padding:0 16px;margin-top:auto;margin-bottom:96px;display:grid;gap:8px}
+.not{background:rgba(255,255,255,.16);backdrop-filter:blur(14px);border-radius:18px;padding:11px 14px;font-size:14px;line-height:1.4}
+.not b{display:flex;justify-content:space-between;font-size:12px;opacity:.8;font-weight:400}
+.not span{font-weight:600}
+.hint{position:absolute;bottom:calc(env(safe-area-inset-bottom,0px) + 30px);font-size:15px}
+/* passcode */
+.pass{z-index:40;display:flex;flex-direction:column;align-items:center;padding-top:calc(env(safe-area-inset-top,0px) + 100px);background:rgba(14,8,25,.75);backdrop-filter:blur(22px);opacity:0;pointer-events:none;text-align:center}
+.pass.on{opacity:1;pointer-events:auto}
+#dots{display:flex;gap:16px;margin:22px 0 40px}
+#dots i{width:14px;height:14px;border:1.5px solid #fff;border-radius:50%}
+#dots i.f{background:#fff}
+.shake{animation:sh .35s}@keyframes sh{25%{transform:translateX(-10px)}75%{transform:translateX(10px)}}
+.pad{display:grid;grid-template-columns:repeat(3,76px);gap:16px}
+.pad button{height:76px;border-radius:50%;background:rgba(255,255,255,.16);font-size:30px}
+.pad button:active{background:rgba(255,255,255,.4)}
+.pad .z{grid-column:2}
+.cancel{margin-top:auto;margin-bottom:60px;font-size:17px}
+/* home */
+.home{z-index:10;padding:calc(env(safe-area-inset-top,0px) + 56px) 16px 0}
+.wg{background:rgba(255,255,255,.16);backdrop-filter:blur(14px);border-radius:24px;padding:16px 18px;margin-bottom:22px}
+.wg small{font-size:13px;opacity:.85}.wg h3{font-size:19px;margin:2px 0}.wg p{font-size:30px;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px 8px;text-align:center;font-size:12px}
+.ic{width:60px;height:60px;border-radius:15px;margin:0 auto 5px;display:grid;place-items:center;font-size:30px}
+.dock{position:absolute;left:14px;right:14px;bottom:calc(env(safe-area-inset-bottom,0px) + 28px);background:rgba(255,255,255,.18);backdrop-filter:blur(16px);border-radius:28px;padding:12px;display:flex;justify-content:space-around;font-size:12px;text-align:center}
+/* apps */
+.app{z-index:20;background:#120c1c;transform:translateX(100%);display:flex;flex-direction:column}
+.app.on{transform:none}
+.hd{padding:calc(env(safe-area-inset-top,0px) + 46px) 18px 12px;display:flex;align-items:center;gap:12px;font-size:22px;font-weight:600;border-bottom:1px solid #33284a}
+.bk{color:var(--pink);font-size:15px;font-weight:400}
+.bd{flex:1;overflow-y:auto;padding:8px 0 110px}
+.li{display:flex;gap:12px;align-items:center;padding:12px 18px;width:100%;text-align:left}
+.li .m{flex:1;min-width:0}.li small{color:var(--sub);display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.av{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#7a3a74,var(--pink));display:grid;place-items:center;font-size:24px;flex:none}
+.chat{padding:10px 14px;display:flex;flex-direction:column;gap:8px}
+.b{max-width:75%;padding:9px 13px;border-radius:18px;background:var(--card);font-size:15px;line-height:1.45}
+.b.me{align-self:flex-end;background:#06c755;color:#04210f}
+.send{display:flex;gap:8px;padding:10px 14px;background:#120c1c;position:absolute;bottom:0;left:0;right:0;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 22px)}
+.send input{flex:1;min-width:0;border-radius:20px;border:1px solid #3a2d52;background:var(--card);color:#fff;padding:10px 14px;font:inherit}
+.send button{background:#06c755;border-radius:50%;width:42px}
+.ph{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.ph i{aspect-ratio:3/4;display:grid;place-items:center;font-size:28px;font-style:normal}
+.ig{padding:8px 18px}.ig .st{display:flex;gap:22px;text-align:center;font-size:13px}.ig .st b{display:block;font-size:17px}
+.cg{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;gap:8px 0;padding:14px 12px;font-size:16px}
+.cg b{font-size:13px;color:var(--sub);font-weight:400}.cg span{padding:5px 0;position:relative}
+.cg .td{background:var(--pink);border-radius:50%}.cg .dt:after{content:"";position:absolute;left:50%;bottom:-2px;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:var(--pink)}
+.ev{display:flex;gap:16px;padding:12px 18px;border-top:1px solid #33284a;font-size:15px}.ev b{color:var(--pink);min-width:56px;font-weight:600}
+.sw{padding:6px 14px;border-radius:16px;background:#3a3748;font-size:14px}.sw.on{background:#34c759}
+.cl{display:flex;justify-content:space-between;align-items:center;background:var(--card);margin:8px 14px;padding:14px 16px;border-radius:16px}.cl b{font-size:30px;font-weight:300;display:block}
+.bdg{position:absolute;top:-6px;left:calc(50% + 12px);min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:#ff3b30;color:#fff;font-size:13px;font-weight:600;display:grid;place-items:center;z-index:2}
+.bar{position:absolute;bottom:calc(env(safe-area-inset-bottom,0px) + 8px);left:50%;width:34%;height:5px;margin-left:-17%;border-radius:3px;background:#fff;opacity:.85;z-index:70}
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="sb"><span id="sbt"></span><span>5G ▮▮▮▮</span></div>
+
+  <section class="scr wall home" id="home"></section>
+  <section class="scr app" id="app"></section>
+
+  <section class="scr wall lock" id="lock" data-act="pass">
+    <div id="ldate"></div><div id="bigclock"></div>
+    <div class="nots" id="nots"></div>
+    <div class="hint">ปัดขึ้นเพื่อเข้าสู่โลกของอลิซ</div>
+  </section>
+
+  <section class="scr pass" id="pass">
+    <div id="ptitle">ใส่รหัสผ่าน</div>
+    <div id="dots"></div>
+    <div class="pad" id="pad"></div>
+    <button class="cancel" data-act="cancel">ยกเลิก</button>
+  </section>
+  <div class="bar" data-act="home"></div>
+</div>
+
+<script>
+/* ===== ข้อมูลทั้งหมดแก้ที่นี่ที่เดียว =====
+   ช่องรูป: ใส่ชื่อไฟล์ (วางไว้โฟลเดอร์เดียวกับไฟล์นี้) หรือใส่ "" ถ้ายังไม่มีรูป */
+const C = {
+  name: "อลิซ",
+  passcode: "1903",              /* วันครบรอบ */
+  wallpaper: "wall.jpg",         /* วอลเปเปอร์หน้าล็อก */
+  homeWallpaper: "home.jpg",     /* วอลเปเปอร์หน้าโฮม */
+  notifs: [
+    { i: "💬", t: "LINE", x: "น้ำขิง: เป็นไงบ้าง วันนี้รอดไหม 😆" },
+    { i: "📅", t: "ปฏิทิน", x: "วันจันทร์ 08:30 · ทำงานที่ L’UNE" },
+  
+  ],
+  chats: [
+        { n: "น้ำขิง", e: "namking.jpg", l: "ไปกินข้าวกัน เดี๋ยวเลี้ยงเอง", t: "20:12",
+      m: [
+        ["them","เป็นไงบ้าง วันนี้รอดไหม 😆"],
+        ["me","ยังไม่ตายค่ะ"],
+        ["them","555 แปลว่าเกือบ"],
+        ["me","เกือบจริงๆ ตื่นตีห้าครึ่ง ถึงออฟฟิศ 8:10 ยังโดนมองนาฬิกา"],
+        ["them","มองนาฬิกาทั้งที่ยังไม่สาย?"],
+        ["me","ใช่ เหมือนเช็กว่าฉันมาจริงไหม"],
+        ["them","แกสาย 0 นาทีเลยนะ เทพแล้ว"],
+        ["me","เขาไม่ได้พูดอะไรเลย แต่ฉันรู้สึกว่าโดนตรวจอยู่"],
+        ["them","ประธานนันท์นลิน ตัวจริงเป็นไง เหมือนในข่าวไหม"],
+        ["me","สูงกว่าที่คิด เสียงเรียบมาก ไม่เคยขึ้นเสียงสักครั้ง"],
+        ["me","แต่ทุกประโยคฟังเหมือนไม่มีให้ต่อรอง"],
+        ["them","โอ้โห ใต้เงาจันทราจริงๆ"],
+        ["me","อะไรของแก"],
+        ["them","เห็นเขาเรียกกันในบริษัทว่างั้น ไปอ่านเจอมา 🌙"],
+        ["me","ก็พอได้ยินมาเหมือนกัน"],
+        ["me","ตารางผิดช่องเดียว โดนบอกให้เช็กสองรอบ"],
+        ["them","แล้วแกทำไง"],
+        ["me","ขอโทษไปสามรอบ"],
+        ["them","แกอย่าขอโทษทุกประโยคสิ 555"],
+        ["me","ฉันรู้ แต่มันออกมาเอง"],
+        ["them","คราวหน้าลองตอบแค่ รับทราบค่ะ เฉยๆ"],
+        ["me","เขาก็ให้ตอบแบบนั้นแหละ"],
+        ["them","เห็นไหม ใจตรงกัน"],
+        ["me","น้ำขิง!"],
+        ["them","ล้อเล่นๆ"],
+        ["me","น้ำขิง… เรื่องโต๊ะ เขาให้ฉันนั่งหน้าห้องเขาเลย"],
+        ["them","เฮ้ย หน้าห้องประธานเลยเหรอ"],
+        ["them","ปกติผู้ช่วยเขานั่งฝั่งตรงข้ามไม่ใช่เหรอ"],
+        ["me","ฝ่ายบุคคลก็ถามแบบนั้น เขาตอบแค่ หน้าห้องฉัน"],
+        ["them","แปลว่าเขาอยากเห็นแกตลอดเวลาไหมนะ 👀"],
+        ["me","อย่าคิดไปไกล เขาแค่อยากคุมงาน"],
+        ["them","ได้ๆ งั้นแกก็อย่าหน้าแดงสิ"],
+        ["me","ไม่ได้แดง!"],
+        ["them","ส่งรูปมาพิสูจน์"],
+        ["me","ไม่ส่ง"],
+        ["them","เห็นไหมหลบ 😏"],
+        ["me","ไปกินข้าวไป"],
+        ["them","แล้วนี่กินอะไรยัง"],
+        ["me","กาแฟดำ ไม่หวาน แก้วเดียวตั้งแต่เช้า"],
+        ["them","แกทำตามเขาไปถึงเรื่องกาแฟแล้วเหรอ"],
+        ["me","จดโน้ตไว้ในมือถือ ห้ามลืม"],
+        ["them","สงสารกระเพาะแกจัง"],
+        ["them","แล้วเรื่องน้ำหอมล่ะ ยังไม่ตอบเหรอ"],
+        ["me","ยังไม่รู้จะตอบว่าอะไร"],
+        ["them","เขาทักมาอีกไหม"],
+        ["me","โทรมาเมื่อกี้ ไม่ได้รับ"],
+        ["them","แล้วแกเป็นไง"],
+        ["me","ใจเต้นแรงสิบวินาที แล้วก็เฉยๆ"],
+        ["them","สิบวินาทีก็ยังเยอะนะ"],
+        ["me","รู้"],
+        ["them","ไม่ต้องตอบวันนี้ก็ได้ พักก่อน"],
+        ["me","ขอบใจนะ"],
+        ["them","อย่าขอบใจ ไปกินข้าวกับฉัน"],
+        ["them","ไปกินข้าวกัน เดี๋ยวเลี้ยงเอง"]
+      ]
+    },
+    { n: "น้ำหอม", e: "namhom.jpg", l: "เธอเก่งอยู่แล้ว เราเชื่ออย่างนั้นเสมอ", t: "เมื่อวาน",
+      m: [
+        ["them","อลิซ เราคุยกันได้ไหม"],
+        ["them","ไม่ได้จะขอกลับมา แค่อยากอธิบาย"],
+        ["them","เรายังเก็บเสื้อตัวนั้นของเธอไว้อยู่นะ"],
+        ["me","เราเพิ่งเริ่มงานใหม่ ตอนนี้ยังไม่ว่าง"],
+        ["them","เข้าใจ ขอให้งานใหม่ราบรื่นนะ"],
+        ["them","เธอเก่งอยู่แล้ว เราเชื่ออย่างนั้นเสมอ"]
+      ]
+    },
+    { n: "คุณนันท์ (ประธาน)", e: "nannalin.jpg", l: "นอนได้แล้ว", t: "21:40",
+      m: [
+        ["me","คุณนันท์คะ ตารางประชุมพรุ่งนี้ส่งเข้าอีเมลแล้วนะคะ"],
+        ["them","เปิดดูแล้ว ช่องบ่ายสองผิด"],
+        ["me","ขอโทษค่ะ แก้เรียบร้อยแล้วค่ะ"],
+        ["them","รอบหน้าเช็กสองรอบก่อนส่ง"],
+        ["me","รับทราบค่ะ"],
+        ["them","แล้วทำไมยังไม่นอน"],
+        ["me","กำลังจัดตารางงานพรุ่งนี้ค่ะ อีกนิดเดียวก็เสร็จแล้ว"],
+        ["them","พรุ่งนี้ไม่ต้องเข้ามาก่อนเวลา"],
+        ["me","แต่มีประชุมตอนเก้าโมงนะคะ"],
+        ["them","ฉันรู้ว่าเมื่อไหร่มีประชุม"],
+        ["them","หมายถึงให้กลับไปพัก"],
+        ["me","เข้าใจแล้วค่ะ จะกลับแล้วค่ะ"],
+        ["them","ถึงบ้านแล้วบอกด้วย"],
+        ["me","ถึงบ้านแล้วนะคะ"],
+        ["them","พรุ่งนี้อย่าสาย"],
+        ["me","รับทราบค่ะ 😭"],
+        ["them","วันนี้ทำได้ดี"],
+        ["me","…ขอบคุณค่ะ คุณนันท์"],
+        ["them","นอนได้แล้ว"]
+      ]
+    }
+  ],
+  ig: {
+    captions: [
+      { c: "อยากหาเวลาไปกินอีก", l: "312", d: "2 วันที่แล้ว" },
+      { c: "Only me", l: "287", d: "3 วันที่แล้ว" },
+      { c: "Still here", l: "404", d: "5 วันที่แล้ว" },
+      { c: ":)", l: "356", d: "1 สัปดาห์ที่แล้ว" },
+      { c: "", l: "198", d: "1 สัปดาห์ที่แล้ว" },
+      { c: "เทสๆ", l: "221", d: "2 สัปดาห์ที่แล้ว" },
+      { c: "เมืองตอนเย็น", l: "265", d: "2 สัปดาห์ที่แล้ว" },
+      { c: "Smile", l: "330", d: "3 สัปดาห์ที่แล้ว" },
+      { c: "ผ่านไปอีกวัน", l: "489", d: "3 สัปดาห์ที่แล้ว" }
+    ],
+    photos: ["P04.jpg","P05.jpg","P06.jpg","P07.jpg","P08.jpg","P09.jpg","P10.jpg","P11.jpg","P12.jpg"],
+    avatar: "alice.jpg", user: "alice", name: "อลิซ", bio: " A", posts: 9, followers: "1,284", following: 312
+  },
+
+  /* รูปในแอปรูปภาพ (15 ช่อง) และตารางโพสต์ Instagram (ใช้ 9 รูปแรก) */
+  photos: ["P01.jpg","P02.jpg","P03.jpg","P04.jpg","P05.jpg","P06.jpg","P07.jpg","P08.jpg","P09.jpg","P11.jpg","P12.jpg","P13.jpg","P14.jpg","P15.jpg","P16.jpg"],
+
+  notes: [
+    { t: "วันแรกที่ L’UNE", d: "วันนี้", x: "☐ ถึงออฟฟิศก่อน 08:30\n☐ กาแฟดำ ไม่หวาน\n☐ เช็กตารางสองรอบก่อนส่ง\n☐ ห้ามสาย\n☐ อย่าขอโทษบ่อย" },
+    { t: "ที่ต้องจำ", d: "เมื่อวาน", x: "โต๊ะอยู่หน้าห้องประธาน\nไม่ต้องรีบตอบ ตรวจให้แน่ใจก่อน\nเธอไม่ชอบให้พูดอ้อม" },
+    { t: "ไม่ได้ตั้งชื่อ", d: "02:13", x: "กลิ่นน้ำหอมที่เธอใช้ ยังจำได้ทุกครั้งที่เดินผ่านร้านนั้น\n\nอย่าตอบข้อความนั้น\n\n(ยังไม่ได้ลบ)" }
+  ],
+  alarms: [
+    { t: "05:30", l: "ตื่น ห้ามสาย", on: 1 },
+    { t: "07:00", l: "ออกจากบ้าน", on: 1 },
+    { t: "22:30", l: "นอนได้แล้ว 🌙", on: 0 }
+  ],
+  songs: [
+    { t: "UNDER MY RULES", a: "Aoom Thaweepon & Meena Rina", u: "https://open.spotify.com/album/6secIJGw93kxwRZ1JcNug9", img: "song.png" },
+    { t: "What’s Between Us", a: "Aoom Thaweepon & Meena Rina", u: "https://open.spotify.com/album/5HokEdUJwG2syaELMGv05W", img: "song2.png" }
+  ],
+  calls: [
+    { n: "น้ำหอม", o: 0, s: "", w: "วันนี้ 19:05 น.", x: 1 },
+    { n: "คุณนันท์ (ประธาน)", o: 0, s: "1 นาที", w: "วันนี้ 18:02 น." },
+    { n: "น้ำขิง", o: 1, s: "6 นาที", w: "วันนี้ 12:30 น." },
+    { n: "ฝ่ายบุคคล L’UNE", o: 0, s: "2 นาที", w: "เมื่อวาน 16:30 น." },
+    { n: "น้ำหอม", o: 0, s: "", w: "วันพุธ 23:47 น.", x: 1 },
+    { n: "น้ำขิง", o: 0, s: "14 นาที", w: "วันอังคาร 21:10 น." }
+  ]
+};
+
+/* ===== โค้ดทำงาน ===== */
+const $ = s => document.querySelector(s), p2 = n => String(n).padStart(2, "0");
+const D = ["อาทิตย์","จันทร์","อังคาร","พุธ","พฤหัสบดี","ศุกร์","เสาร์"];
+const M = ["มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม"];
+const START = new Date(2026, 10, 7); // วันออกอากาศตอนแรก
+const nextAir = () => { const n = new Date(); n.setHours(0,0,0,0); let d = new Date(n < START ? START : n); while (d.getDay() !== 6) d.setDate(d.getDate() + 1); return d; };
+
+function tick() {
+  const n = new Date(), t = p2(n.getHours()) + ":" + p2(n.getMinutes());
+  $("#sbt").textContent = t; $("#bigclock").textContent = t;
+  $("#ldate").textContent = `วัน${D[n.getDay()]}ที่ ${n.getDate()} ${M[n.getMonth()]}`;
+}
+tick(); setInterval(tick, 1000);
+
+/* วอลเปเปอร์: ถ้าไม่มีไฟล์รูป จะใช้พื้นหลังไล่สีเดิมแทน */
+const setWall = (el, img) => { if (img) el.style.background = `linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.35)),url("${img}") center/cover,var(--wf)`; };
+setWall($("#lock"), C.wallpaper);
+setWall($("#home"), C.homeWallpaper || C.wallpaper);
+$("#nots").innerHTML = C.notifs.map(n => `<div class="not"><b><span>${n.i} ${n.t}</span>เร็ว ๆ นี้</b>${n.x}</div>`).join("");
+
+/* หน้าโฮม */
+const APPS = [["line","LINE","#06c755"],["ig","Instagram",""],["photos","รูปภาพ",""],["cal","ปฏิทิน",""],["clock","นาฬิกา",""],["youtube","YouTube",""],["iqiyi","iQIYI","#00cc96"],["music","Music","#e8508a"],["notes","โน้ต",""],["bank","MGI BANK",""],["safari","Safari",""]];
+const EMO = { iqiyi: "▶", music: "🎵" };
+const T = new Date(), TH = ["อา.","จ.","อ.","พ.","พฤ.","ศ.","ส."];
+const svg = b => `<svg viewBox="0 0 60 60" width="100%" height="100%">${b}</svg>`;
+const petals = ["#f9c74f","#f9844a","#f94144","#c77dff","#4d96ff","#43aa8b","#90be6d","#f8961e"].map((c, i) => `<ellipse cx="30" cy="19" rx="6.5" ry="11" fill="${c}" opacity=".75" transform="rotate(${i * 45} 30 30)"/>`).join("");
+const ticks = Array.from({ length: 12 }, (_, i) => `<line x1="30" y1="8" x2="30" y2="${i % 3 ? 10.5 : 12}" stroke="#222" stroke-width="${i % 3 ? 1 : 1.6}" transform="rotate(${i * 30} 30 30)"/>`).join("");
+const hh = (T.getHours() % 12 + T.getMinutes() / 60) * 30, mm = T.getMinutes() * 6;
+const BANK = {
+  acc: "xxx-x-x4821-9",
+  balance: 67896,
+  tx: [
+    { t: "โอนให้ น้ำขิง · ค่าข้าวเย็น", a: -350, d: "วันนี้ 19:20" },
+    { t: "ร้านกาแฟ", a: -65, d: "วันนี้ 07:40" },
+    { t: "รถไฟฟ้า BTS", a: -42, d: "วันนี้ 07:15" },
+    { t: "ค่าเช่าห้อง", a: -8500, d: "เมื่อวาน" },
+    { t: "เงินโอนจาก แม่", a: 5000, d: "3 วันที่แล้ว" },
+    { t: "ค่าสมัครงาน · ตรวจสุขภาพ", a: -1200, d: "5 วันที่แล้ว" }
+  ]
+};
+let bankHide = false;
+const baht = n => n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const ICONS = {
+  line: svg(`<rect width="60" height="60" fill="#06c755"/><ellipse cx="30" cy="27" rx="20" ry="15" fill="#fff"/><path d="M23 38l-3 9 13-8z" fill="#fff"/><text x="30" y="31" font-size="10" font-weight="700" text-anchor="middle" fill="#06c755" font-family="Arial,sans-serif">LINE</text>`),
+  ig: svg(`<defs><linearGradient id="igg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#feda75"/><stop offset=".3" stop-color="#fa7e1e"/><stop offset=".55" stop-color="#d62976"/><stop offset=".8" stop-color="#962fbf"/><stop offset="1" stop-color="#4f5bd5"/></linearGradient></defs><rect width="60" height="60" fill="url(#igg)"/><rect x="14" y="14" width="32" height="32" rx="9" fill="none" stroke="#fff" stroke-width="3.5"/><circle cx="30" cy="30" r="7.5" fill="none" stroke="#fff" stroke-width="3.5"/><circle cx="40" cy="20" r="2.3" fill="#fff"/>`),
+  photos: svg(`<rect width="60" height="60" fill="#fff"/>${petals}`),
+  cal: svg(`<rect width="60" height="60" fill="#fff"/><text x="30" y="17" font-size="10" font-weight="600" text-anchor="middle" fill="#ff3b30" font-family="Prompt,sans-serif">${TH[T.getDay()]}</text><text x="30" y="47" font-size="30" font-weight="300" text-anchor="middle" fill="#111" font-family="Arial,sans-serif">${T.getDate()}</text>`),
+  clock: svg(`<rect width="60" height="60" fill="#000"/><circle cx="30" cy="30" r="25" fill="#fff"/>${ticks}<line x1="30" y1="30" x2="30" y2="17" stroke="#111" stroke-width="2.4" stroke-linecap="round" transform="rotate(${hh} 30 30)"/><line x1="30" y1="30" x2="30" y2="11" stroke="#111" stroke-width="1.8" stroke-linecap="round" transform="rotate(${mm} 30 30)"/><circle cx="30" cy="30" r="1.8" fill="#ff9500"/>`),
+  youtube: svg(`<rect width="60" height="60" rx="13" fill="#ff0033"/><rect x="10" y="17" width="40" height="26" rx="7" fill="#fff"/><path d="M26 23 L26 37 L37 30 Z" fill="#ff0033"/>`),
+  notes: svg(`<rect width="60" height="60" fill="#fff"/><rect width="60" height="17" fill="#ffd60a"/><line x1="12" y1="30" x2="48" y2="30" stroke="#ccc" stroke-width="2"/><line x1="12" y1="39" x2="48" y2="39" stroke="#ccc" stroke-width="2"/><line x1="12" y1="48" x2="34" y2="48" stroke="#ccc" stroke-width="2"/>`),
+  phone: svg(`<rect width="60" height="60" fill="#34c759"/><path d="M20 14c-2 0-5 3-5 6 0 14 11 25 25 25 3 0 6-3 6-5l-1-4-7-2-3 3c-4-2-7-5-9-9l3-3-2-7-4-1z" fill="#fff"/>`)
+};
+ICONS.iqiyi = `<div style="position:relative;width:100%;height:100%">${svg(`<rect width="60" height="60" fill="#00cc36"/><text x="30" y="36" font-size="15" font-weight="700" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif">iQIYI</text>`)}<img src="iqiyi.png" onerror="this.remove()" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></div>`;
+ICONS.bank = `<div style="position:relative;width:100%;height:100%">${svg(`<rect width="60" height="60" fill="#6c3bb0"/><text x="30" y="40" font-size="15" font-weight="700" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif">MGI</text>`)}<img src="mgi.jpg" onerror="this.remove()" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></div>`;
+ICONS.safari = svg(`<rect width="60" height="60" fill="#fff"/><circle cx="30" cy="30" r="23" fill="#1e90ff"/><g transform="rotate(45 30 30)"><polygon points="30,13 36,30 24,30" fill="#ff3b30"/><polygon points="30,47 36,30 24,30" fill="#fff"/></g>`);
+const SEARCHES = [
+  { q: "วิธีรับมือเจ้านายเข้มงวด", w: "วันนี้ 22:41" },
+  { q: "ผู้ช่วยประธานบริษัท ต้องทำอะไรบ้าง", w: "วันนี้ 22:15" },
+  { q: "กาแฟดำ ไม่หวาน กินยังไงให้ไม่ขม", w: "วันนี้ 07:30" },
+  { q: "นันท์นลิน L’UNE ประวัติ", w: "เมื่อวาน 23:58" },
+  { q: "ทำไมใจเต้นแรงตอนโดนมอง", w: "เมื่อวาน 23:50" },
+  { q: "กลิ่นน้ำหอมเหมือนที่เคยได้กลิ่น ชื่ออะไร", w: "เมื่อวาน 02:13" },
+  { q: "ลืมแฟนเก่ายังไง", w: "วันอังคาร 01:47" }
+];
+const BADGE = { line: 3, ig: 1, phone: 2 };
+const ico = a => `<button data-act="app" data-v="${a[0]}" style="position:relative">${BADGE[a[0]] ? `<span class="bdg">${BADGE[a[0]]}</span>` : ""}<div class="ic" style="${ICONS[a[0]] ? "overflow:hidden" : "background:" + a[2]}">${ICONS[a[0]] || EMO[a[0]]}</div>${a[1]}</button>`;
+
+(function () {
+  const a = nextAir(), days = Math.round((a - new Date(new Date().setHours(0,0,0,0))) / 864e5);
+  $("#home").innerHTML = `<div class="wg"><small>📅 ปฏิทิน</small><h3>ใต้เงาจันทรา</h3><small>ออกอากาศเสาร์ ${a.getDate()} ${M[a.getMonth()]} · 20:00 น.</small><p>${days === 0 ? "คืนนี้!" : "อีก " + days + " วัน"}</p></div>
+  <div class="grid">${APPS.map(ico).join("")}</div>
+  <div class="dock">${ico(["phone","โทรศัพท์"])}</div>`;
+})();
+
+/* ระบบเปิดแอป */
+function show(title, body, back = "home", extra = "") {
+  $("#app").innerHTML = `<div class="hd"><button class="bk" data-act="${back}">‹ ${back === "home" ? "โฮม" : "กลับ"}</button><span>${title}</span></div><div class="bd">${body}</div>${extra}`;
+  $("#app").classList.add("on");
+}
+const grad = i => `linear-gradient(${i*40}deg,#2a1738,hsl(${300 + i*8},45%,${28 + i%4*5}%))`;
+const tile = (i, src) => `<i style="background:${src ? `url('${src}') center top/cover,` : ""}${grad(i)}">${src ? "" : "🌷"}</i>`;
+const tiles = (n, L = C.photos) => Array.from({ length: n }, (_, i) => tile(i, L[i])).join("");
+const avs = e => /\.(jpe?g|png|webp|gif)$/i.test(e) ? `<div class="av" style="background:url('${e}') center/cover,linear-gradient(135deg,#7a3a74,#ff7eb0)"></div>` : `<div class="av">${e}</div>`;
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+
+function lineList() {
+  show("LINE", C.chats.map((c, i) => `<button class="li" data-act="chat" data-v="${i}">${avs(c.e)}<div class="m"><b>${c.n}</b><small>${c.l}</small></div><small style="flex:none">${c.t}</small></button>`).join(""));
+}
+function lineChat(i) {
+  const c = C.chats[i];
+  show(c.n, `<div class="chat">${c.m.map(m => `<div class="b ${m[0]}">${esc(m[1])}</div>`).join("")}</div>`, "lines",
+    `<div class="send"><input id="msg" placeholder="พิมพ์ข้อความ..." autocomplete="off"><button data-act="send" data-v="${i}">➤</button></div>`);
+  const bd = $("#app .bd"); bd.scrollTop = bd.scrollHeight;
+  $("#msg").addEventListener("keydown", e => { if (e.key === "Enter") send(i); });
+}
+function send(i) {
+  const v = $("#msg").value.trim(); if (!v) return;
+  C.chats[i].m.push(["me", v]); lineChat(i);
+}
+
+const igTiles = (n, L = C.photos) => Array.from({ length: n }, (_, i) => tile(i, L[i]).replace("<i ", `<i data-act="igpost" data-v="${i}" `)).join("");
+function igPost(i) {
+  const g = C.ig, src = (g.photos || C.photos)[i], cp = (g.captions || [])[i] || {};
+  const img = `<div style="width:100%;aspect-ratio:4/5;background:${src ? `url('${src}') center top/cover,` : ""}linear-gradient(160deg,#2a1738,#7a3a74)"></div>`;
+  const pic = g.avatar ? `background:url('${g.avatar}') center/cover,linear-gradient(135deg,#7a3a74,#ff7eb0)` : "";
+  show("โพสต์", `<div style="display:flex;align-items:center;gap:10px;padding:10px 14px"><div class="av" style="width:34px;height:34px;font-size:16px;${pic}">${g.avatar ? "" : "🌷"}</div><b>${g.user}</b></div>${img}<div style="padding:10px 14px;font-size:22px;letter-spacing:12px">♡ 💬 ➤</div><div style="padding:0 14px;font-size:14px"><b>ถูกใจ ${cp.l || "1,024"} รายการ</b><p style="margin-top:6px;line-height:1.5"><b>${g.user}</b> ${cp.c || ""}</p><small style="color:var(--sub);display:block;margin-top:6px">${cp.d || ""}</small></div>`, "igback");
+}
+function noteList() {
+  show("โน้ต", C.notes.map((n, i) => `<button class="li" data-act="note" data-v="${i}" style="display:block"><b>${n.t}</b><small>${n.d} · ${n.x.split("\n")[0]}</small></button>`).join(""));
+}
+function noteOpen(i) {
+  const n = C.notes[i];
+  show(n.t, `<div style="margin:0 14px;padding:16px;background:#fffbe6;color:#222;border-radius:14px;line-height:1.8;white-space:pre-line">${n.x}</div>`, "notelist");
+}
+function calendar() {
+  const events = [
+    { d: "2026-10-27", t: 'iQIYI Original "Under Her Rules" Official Trailer OUT NOW' },
+    { d: "2026-10-28", t: 'iQIYI Original "Under Her Rules" OST Teaser' },
+    { d: "2026-10-30", t: 'iQIYI Original "Under Her Rules" OST MV — OUT NOW' },
+    { d: "2026-10-31", t: "EP.0 Premiere — 8:00 PM ICT on iQIYI" },
+    { d: "2026-11-01", t: "1st EP Fan Screening — Ticket Sales Open" },
+    { d: "2026-11-05", t: "iQIYI iJOY TH2027 — ICONSIAM HALL, 7th Floor, ICONSIAM" },
+    { d: "2026-11-07", t: 'iQIYI Original "Under Her Rules" Premiere — UNCUT version every Saturday at 8:00 PM ICT on iQIYI and IQ.com' }
+  ];
+  const n = new Date(); let content = "";
+  for (const { y, m } of [{ y: 2026, m: 9 }, { y: 2026, m: 10 }]) {
+    const f = new Date(y, m, 1).getDay(), tot = new Date(y, m + 1, 0).getDate();
+    let cells = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].map(x => `<b>${x}</b>`).join("") + "<span></span>".repeat(f);
+    for (let d = 1; d <= tot; d++) {
+      const iso = `${y}-${p2(m + 1)}-${p2(d)}`, dt = new Date(y, m, d);
+      const air = dt.getDay() === 6 && dt >= START, e = events.find(x => x.d === iso);
+      const today = d === n.getDate() && m === n.getMonth() && y === n.getFullYear();
+      cells += `<span class="${today ? "td" : ""} ${air || e ? "dt" : ""}">${d}</span>`;
+    }
+    content += `<h3 style="padding:8px 18px">${M[m]} ${y + 543}</h3><div class="cg">${cells}</div>`;
+    content += events.filter(e => e.d.startsWith(`${y}-${p2(m + 1)}-`)).map(e => `<div class="ev"><b>${Number(e.d.slice(-2))} ${M[m].slice(0, 3)}.</b> ${e.t}</div>`).join("");
+  }
+  return show("Calendar · Under Her Rules", content);
+}
+function openApp(id) {
+  if (id === "line") return lineList();
+    if (id === "safari") return searchApp();
+    if (id === "bank") return bankApp();
+  if (id === "notes") return noteList();
+  if (id === "cal") return calendar();
+  if (id === "ig") { const g = C.ig, pic = g.avatar ? `background:url('${g.avatar}') center/cover,linear-gradient(135deg,#7a3a74,#ff7eb0)` : "";
+    return show(g.user, `<div class="ig"><div style="display:flex;gap:20px;align-items:center"><div class="av" style="width:84px;height:84px;font-size:40px;${pic}">${g.avatar ? "" : "🌷"}</div><div class="st"><div><b>${g.posts}</b>โพสต์</div><div><b>${g.followers}</b>ผู้ติดตาม</div><div><b>${g.following}</b>กำลังติดตาม</div></div></div><p style="margin:12px 0 4px"><b>${g.name}</b></p><p style="color:var(--sub);font-size:14px;margin-bottom:12px">${g.bio}</p></div><div class="ph">${igTiles(9, g.photos || C.photos)}</div>`); }
+  if (id === "photos") return show("รูปภาพ", `<div class="ph">${photoTiles()}</div>`);
+  if (id === "clock") return show("นาฬิกาปลุก", C.alarms.map((a, i) => `<div class="cl"><div><b>${a.t}</b>${a.l}</div><button class="sw ${a.on ? "on" : ""}" data-act="alarm" data-v="${i}">${a.on ? "เปิด" : "ปิด"}</button></div>`).join(""));
+  if (id === "iqiyi") return show("iQIYI", `<div style="margin:0 14px;background:#101010;border-radius:18px;overflow:hidden"><div style="padding:16px;background:#00cc96;color:#063d2b;font-size:22px;font-weight:600">iQIYI</div><div style="padding:14px"><img src="underher-rules.png" alt="ใต้เงาจันทรา" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;background:#292929"><h2 style="margin:14px 0 6px">ใต้เงาจันทรา</h2><p style="margin:0 0 14px;color:#bbb;font-size:13px">Under Her Rules</p><a href="https://www.iq.com/play/ใต้เงาจันทรา-13pwkzgwn88?lang=th_th" target="_blank" rel="noopener" style="display:block;text-align:center;padding:13px;background:#00cc96;color:#063d2b;border-radius:24px;text-decoration:none;font-weight:600">▶ ดูซีรีส์</a></div></div>`);
+  if (id === "music") return show("Music", C.songs.map(s => `<div style="display:flex;align-items:center;gap:14px;padding:16px;border-radius:18px;background:linear-gradient(135deg,#fff0f6,#f5edff);color:#222;margin:0 14px 12px"><div style="width:84px;height:84px;flex:none;border-radius:16px;background:url('${s.img}') center/cover,linear-gradient(135deg,#7a3a74,#ff7eb0)"></div><div style="min-width:0"><b>${s.t}</b><small style="display:block;margin-top:6px;color:#666">${s.a}</small><a href="${s.u}" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;padding:9px 14px;background:#1DB954;color:#fff;border-radius:20px;text-decoration:none;font-size:12px">Listen on Spotify</a></div></div>`).join(""));
+  if (id === "youtube") { const vid = "Mrm0Ej8e_Yw", url = `https://www.youtube.com/watch?v=${vid}`; return show("YouTube", `<div style="margin:0 14px;padding:12px;color:#222;background:#fff;border-radius:14px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:14px"><span style="font-size:25px;color:#ff0033">▶</span><b style="font-size:21px">YouTube</b></div><a href="${url}" target="_blank" rel="noopener" style="display:block;position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000 url('https://img.youtube.com/vi/${vid}/hqdefault.jpg') center/cover"><span style="position:absolute;inset:0;display:grid;place-items:center"><span style="width:62px;height:44px;background:#ff0033;border-radius:12px;display:grid;place-items:center;color:#fff;font-size:20px">▶</span></span></a><div style="font-size:15px;font-weight:600;margin-top:12px">Watch on YouTube</div><a href="${url}" target="_blank" rel="noopener" style="display:block;margin-top:14px;padding:12px;background:#ff0033;color:#fff;text-align:center;text-decoration:none;border-radius:22px;font-size:14px">▶ Open in YouTube</a></div>`); }
+  if (id === "phone") return show("ล่าสุด", C.calls.map(c => `<div class="li"><div class="m"><b style="${c.x ? "color:#ff453a" : ""}">${c.n}</b><small>${c.x ? "↙ สายที่ไม่ได้รับ" : (c.o ? "↗ โทรออก" : "↙ โทรเข้า") + " · " + c.s}</small></div><small style="flex:none">${c.w}</small></div>`).join(""));
+}
+const photoTiles = () => C.photos.map((s, i) => tile(i, s).replace("<i ", `<i data-act="photo" data-v="${i}" `)).join("");
+function photoView(i) {
+  const n = C.photos.length, src = C.photos[i];
+  show(`${i + 1} / ${n}`, `<div style="width:100%;aspect-ratio:3/4;background:${src ? `url('${src}') center/contain no-repeat,` : ""}${grad(i)};display:grid;place-items:center;font-size:60px">${src ? "" : "🌷"}</div>
+  <div style="display:flex;justify-content:space-around;padding:18px;font-size:34px"><button data-act="photo" data-v="${(i + n - 1) % n}">‹</button><button data-act="photo" data-v="${(i + 1) % n}">›</button></div>`, "photoback");
+}
+function bankApp() {
+  const b = BANK;
+  const act = (e, t) => `<div style="text-align:center;font-size:12px"><div style="width:54px;height:54px;margin:0 auto 6px;border-radius:17px;background:var(--card);display:grid;place-items:center;font-size:25px">${e}</div>${t}</div>`;
+  const tab = (e, t, on) => `<div style="flex:1;text-align:center;font-size:11px;color:${on ? "#b98cff" : "var(--sub)"}"><div style="font-size:22px">${e}</div>${t}</div>`;
+  show("MGI BANK",
+    `<div style="padding:4px 18px 12px"><small style="color:var(--sub)">สวัสดี</small><div style="font-size:20px;font-weight:600">คุณอรัญญา</div></div>
+    <div style="margin:0 14px 18px;padding:20px;border-radius:22px;background:linear-gradient(135deg,#6c3bb0,#e8508a)">
+      <div style="display:flex;justify-content:space-between;font-size:13px;opacity:.9"><span>บัญชีออมทรัพย์</span><span>${b.acc}</span></div>
+      <p style="margin:16px 0 2px;font-size:13px;opacity:.85">ยอดเงินที่ใช้ได้</p>
+      <div style="display:flex;align-items:center;gap:10px"><span style="font-size:32px;font-weight:600">${bankHide ? "฿ ••••••" : "฿ " + baht(b.balance)}</span><button data-act="bankeye" style="font-size:20px">${bankHide ? "🙈" : "👁"}</button></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:0 14px 18px">${act("💸","โอนเงิน")}${act("📷","สแกนจ่าย")}${act("📱","เติมเงิน")}${act("🧾","จ่ายบิล")}</div>
+    <div style="margin:0 14px 14px;padding:16px;border-radius:18px;background:var(--card)"><b>MGI Rewards</b><p style="margin-top:4px;font-size:13px;color:var(--sub)">แต้มสะสมของคุณ 1,240 แต้ม แลกส่วนลดได้เลย</p></div>
+    <div style="margin:0 14px;padding:16px;border-radius:18px;background:linear-gradient(135deg,#2a1738,#4a2a6e)"><b>สมัครบัตรเดบิตใบใหม่</b><p style="margin-top:4px;font-size:13px;color:var(--sub)">ไม่มีค่าธรรมเนียมรายปี</p></div>`,
+    "home",
+    `<div style="position:absolute;bottom:0;left:0;right:0;display:flex;padding:10px 6px calc(env(safe-area-inset-bottom,0px) + 22px);background:#1a1228;border-top:1px solid #33284a">${tab("🏠","หน้าหลัก",1)}${tab("💳","บัญชี")}${tab("⬛","สแกน")}${tab("🧾","บริการ")}${tab("☰","เพิ่มเติม")}</div>`);
+}
+function searchApp() {
+  show("Safari", `<div style="margin:6px 14px 14px;padding:12px 16px;border-radius:22px;background:var(--card);color:var(--sub);font-size:14px">🔍 ค้นหาหรือป้อนที่อยู่เว็บ</div><p style="padding:0 18px 4px;color:var(--sub);font-size:13px">ประวัติการค้นหา</p>` +
+    SEARCHES.map(s => `<div class="li"><span style="font-size:18px;flex:none">🕘</span><div class="m"><b style="font-weight:400">${s.q}</b><small>${s.w}</small></div></div>`).join(""));
+}
+const closeApp = () => $("#app").classList.remove("on");
+
+/* ปลดล็อก */
+let pin = "";
+const L = C.passcode.length;
+$("#pad").innerHTML = [1,2,3,4,5,6,7,8,9,0].map(k => `<button data-act="key" data-v="${k}" ${k === 0 ? 'class="z"' : ""}>${k}</button>`).join("");
+const dots = () => $("#dots").innerHTML = Array.from({ length: L }, (_, i) => `<i class="${i < pin.length ? "f" : ""}"></i>`).join("");
+dots();
+function key(k) {
+  if (pin.length >= L) return; pin += k; dots();
+  if (pin.length === L) setTimeout(() => {
+    if (pin === C.passcode) { $("#pass").classList.remove("on"); $("#lock").classList.add("up"); pin = ""; dots(); }
+    else { $("#dots").classList.add("shake"); $("#ptitle").textContent = "ยังไม่ถูก… ลองใหม่";
+      setTimeout(() => { $("#dots").classList.remove("shake"); pin = ""; dots(); }, 400); }
+  }, 120);
+}
+const openPass = () => { $("#pass").classList.add("on"); $("#ptitle").textContent = "ใส่รหัสผ่าน"; pin = ""; dots(); };
+document.addEventListener("keydown", e => { if ($("#pass").classList.contains("on") && /^\d$/.test(e.key)) key(e.key); });
+let y0 = null;
+$("#lock").addEventListener("touchstart", e => y0 = e.touches[0].clientY, { passive: true });
+$("#lock").addEventListener("touchend", e => { if (y0 !== null && y0 - e.changedTouches[0].clientY > 60) openPass(); y0 = null; });
+
+$(".phone").addEventListener("click", e => {
+  const b = e.target.closest("[data-act]"); if (!b) return;
+  const a = b.dataset.act, v = b.dataset.v;
+  if (a === "pass") openPass(); else if (a === "cancel") $("#pass").classList.remove("on");
+  else if (a === "key") key(v); else if (a === "app") openApp(v); else if (a === "home") closeApp();
+  else if (a === "lines") lineList(); else if (a === "chat") lineChat(+v); else if (a === "send") send(+v);
+ else if (a === "photo") photoView(+v); else if (a === "photoback") openApp("photos");
+   else if (a === "bankeye") { bankHide = !bankHide; openApp("bank"); }
+ else if (a === "igpost") igPost(+v); else if (a === "igback") openApp("ig");
+  else if (a === "note") noteOpen(+v); else if (a === "notelist") noteList();
+  else if (a === "alarm") { C.alarms[v].on ^= 1; openApp("clock"); }
+});
+</script>
+</body>
+</html>
